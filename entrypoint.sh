@@ -21,27 +21,27 @@ export WINEDEBUG=${WINEDEBUG="-all"}
 
 # ENV Parameters
 # How log wait after signal to server to shutdown
-ENV_GRACEFUL_TIMEOUT="${ENV_GRACEFUL_TIMEOUT:='10'}"
+ENV_GRACEFUL_TIMEOUT="${ENV_GRACEFUL_TIMEOUT:=10}"
 # Which IP server should listen to for new connection
-ENV_LISTEN_TO_IP="${ENV_LISTEN_TO_IP:='0.0.0.0'}"
+ENV_LISTEN_TO_IP="${ENV_LISTEN_TO_IP:=0.0.0.0}"
 # How to start application available values: -console and -noconsole
-ENV_CONSOLE_TYPE="${ENV_CONSOLE_TYPE:='-console'}"
+ENV_CONSOLE_TYPE="${ENV_CONSOLE_TYPE:=-console}"
 # Which world to load from directory /worlds mandatory parameter
 ENV_WORLD_NAME=$ENV_WORLD_NAME
 # Refer to official documentation on -ignorelastsession parameter. 
-ENV_IGNORE_LAST_SESSION="${ENV_IGNORE_LAST_SESSION:'true'}"
+ENV_IGNORE_LAST_SESSION="${ENV_IGNORE_LAST_SESSION:=true}"
 
 if [ -z "${ENV_WORLD_NAME}" ]; then
 echo "===> Environment variable ENV_WORLD_NAME is undefined exiting"
     exit 1;
 fi
 
-if [ ! -d "/worlds/${ENV_WORLD_NAME}"]; then
+if [ ! -d "/worlds/${ENV_WORLD_NAME}" ]; then
     echo "===> Directory /worlds/${ENV_WORLD_NAME} with game word does not exists, exiting"
     exit 1;
 fi
 
-if [[ "${ENV_IGNORE_LAST_SESSION}" == 'true' ]] then
+if [[ "${ENV_IGNORE_LAST_SESSION}" == 'true' ]]; then
     ENV_IGNORE_LAST_SESSION="-ignorelastsession"
 else
     unset ENV_IGNORE_LAST_SESSION
@@ -92,11 +92,11 @@ function _ProcessSigTerm() {
     sleep $ENV_GRACEFUL_TIMEOUT
 }
 
-echo "Installing handler for SIGTERM signal"
+echo "===> Installing handler for SIGTERM signal"
 trap _ProcessSigTerm SIGTERM
 
-echo "===> Staring dedicated server using command 'wine $SEDS_BINARY $ENV_CONSOLE_TYPE -path Z:\\worlds\\${ENV_WORLD_NAME} -ip $ENV_LISTEN_TO_IP'"
-wine $SEDS_BINARY $ENV_IGNORE_LAST_SESSION $ENV_CONSOLE_TYPE -path "Z:\\worlds\\${ENV_WORLD_NAME}" -ip "$ENV_LISTEN_TO_IP" &
+echo "===> Staring dedicated server using command 'wine $SEDS_BINARY $ENV_CONSOLE_TYPE -path Z:\\worlds\\${ENV_WORLD_NAME} -ip $ENV_LISTEN_TO_IP"
+wine $SEDS_BINARY $ENV_IGNORE_LAST_SESSION $ENV_CONSOLE_TYPE -path "Z:\\worlds\\${ENV_WORLD_NAME}" -ip $ENV_LISTEN_TO_IP &
 
 child=$!
 wait "$child"
