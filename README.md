@@ -1,4 +1,4 @@
-# Space Engineers Dedicated ArchLinux Docker Container
+# Space Engineers Dedicated Server ArchLinux Docker Container
 Special thanks to [Devidian](https://github.com/Devidian/docker-spaceengineers), my work based on his repository.
 
 # Key difference from Devidian's repository
