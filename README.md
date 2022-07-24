@@ -13,12 +13,12 @@ Special thanks to [Devidian](https://github.com/Devidian/docker-spaceengineers),
 
 Name|Default|Description
 ---|---|---
-WINEDEBUG|-all| Reffer to official documentation [documentation](https://wiki.winehq.org/Wine_User%27s_Guide#WINEDEBUG.3Dchannels)
-ENV_GRACEFUL_TIMEOUT|10|How log wait after signal to server to shutdown, help to avoid termination in middle of saving process
-ENV_LISTEN_TO_IP|0.0.0.0|Which IP server should listen to for new connection, value in `SpaceEngineers-Dedicated.cfg` is ignored
-ENV_CONSOLE_TYPE|-console|How to start application, available values: `-console` and `-noconsole`
+WINEDEBUG|`-all`| Reffer to official documentation [documentation](https://wiki.winehq.org/Wine_User%27s_Guide#WINEDEBUG.3Dchannels)
+ENV_GRACEFUL_TIMEOUT|`10`|How log wait after signal to server to shutdown, help to avoid termination in middle of saving process
+ENV_LISTEN_TO_IP|`0.0.0.0`|Which IP server should listen to for new connection, value in `SpaceEngineers-Dedicated.cfg` is ignored
+ENV_CONSOLE_TYPE|`-console`|How to start application, available values: `-console` and `-noconsole`
 ENV_WORLD_NAME||Which world to load from directory `/worlds` mandatory parameter
-ENV_IGNORE_LAST_SESSION|true|Refer to official [pdocumentation](https://www.spaceengineersgame.com/dedicated-servers/) on -ignorelastsession parameter. 
+ENV_IGNORE_LAST_SESSION|`true`|Refer to official [pdocumentation](https://www.spaceengineersgame.com/dedicated-servers/) on -ignorelastsession parameter. 
 
 ## Creating world
 
