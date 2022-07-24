@@ -1,0 +1,4 @@
+# Ignore all files in the directory
+*
+# Include container specific files
+!/entrypoint.sh
